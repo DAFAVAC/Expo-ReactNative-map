@@ -33,6 +33,7 @@ export default function BottomTabNavigator() {
         }}
       />
     </BottomTab.Navigator>
+    
   );
 }
 
@@ -71,3 +72,8 @@ function TabTwoNavigator() {
     </TabTwoStack.Navigator>
   );
 }
+
+
+
+
+

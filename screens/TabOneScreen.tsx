@@ -3,13 +3,16 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, Button} from "react-native";
 import * as Location from "expo-location";
 import MapView  from 'react-native-maps';
-import { Dimensions } from "react-native";
+
 
 export default function App() {
- const [position, setPosition] = useState(null);
-  
 
   
+
+  const [position, setPosition] = useState(null);
+
+
+
   const getPosition = async () => {
     try {
       const { coords } = await Location.getCurrentPositionAsync({});
@@ -19,6 +22,8 @@ export default function App() {
       setPosition(null);
     }
   };
+
+
 
   const entryPoint = async () => {
     try {
@@ -34,10 +39,6 @@ export default function App() {
   useEffect(() => {
     entryPoint();
   }, []);
-
-
-
-
 
 
 
@@ -68,14 +69,18 @@ export default function App() {
           <View>
             <Button title="Refresh" onPress={getPosition} />
           </View>
+          
         </View>
+        
       )) || (
         <View>
-          <Text>GPS Unavailable</Text>
+          <Text>GPS Unavailable!</Text>
         </View>
       )}
       <StatusBar style="auto" />
+      
     </View>
+    
   );
 }
 
@@ -93,8 +98,34 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   map: {
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height,
+    width: 410,
+    height: 550,
+    bottom:0
   },
+  input:{
+  height:40,
+  width:200,
+  borderColor:"#ccc",
+  borderWidth:2,
+  marginBottom:40
+  },
+  textArea:{
+  height:60,
+  fontSize:18 
+  },
+  title:{
+    textAlign:"center",
+    bottom:15
+  },
+  button:{
+    backgroundColor:'skyblue',
+    paddingTop:15,
+    paddingBottom:15
+  },
+  textBotton:{
+    textAlign:"center",
+    color:"#000"
+  }
+  
 
 });
